@@ -1,6 +1,8 @@
 package com.dp.math;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MathUtils
 {
@@ -39,8 +41,7 @@ public class MathUtils
 
     public static BigInteger factorial(long start, long n)
     {
-        if ( start == 0)
-            start = 1;
+        if (start == 0) { start = 1; }
 
         long i;
         if (n <= 16) {
@@ -52,5 +53,16 @@ public class MathUtils
         return factorial(start, i).multiply(factorial(start + i, n - i));
     }
 
-
+    public static List<Integer> findDivisors(int n)
+    {
+        List<Integer> divisors = new ArrayList<>();
+        divisors.add(1);
+        for (int i = 2; i <= Math.round(Math.sqrt(n)) + 1; i++) {
+            if (n % i == 0) {
+                divisors.add(n/i);
+                divisors.add(i);
+            }
+        }
+        return divisors;
+    }
 }
